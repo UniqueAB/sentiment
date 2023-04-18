@@ -1,0 +1,29 @@
+
+{% extends 'sentiments/base.html' %}
+{% block content %}
+<h1 style="text-align: center;margin-top: 30px;">Sentiment Analysis<br /></h1>
+
+<div class="" style="margin:0 auto; width:70%">
+  <form class="form" action="" method="POST">
+    {% csrf_token %}
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Type your text here"
+    name="txt"
+  />
+  <br>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary">sentiment</button>
+  </div>
+  {% if sent_val %}
+  <div class="alert alert-warning alert-dismissible fade show text-center mt-5" role="alert">
+    <strong>{{sent_val}}</strong>
+    <button type="button" class="btn-close text-center" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %}
+</form>
+<a href="{% url 'createsentiment' %}">create sentiment</a>
+</div>
+{% endblock content %}
+
